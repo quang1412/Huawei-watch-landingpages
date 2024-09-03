@@ -1,0 +1,255 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>	
+<script src="../js/sequence-frame.js"></script>
+
+<style>
+    .section-sequence-frame .sticky-wrapper{
+        position: relative;
+        z-index: 1;
+        height: 500vh;
+    }
+    .section-sequence-frame .sticky-content{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0; /** 76px; **/
+        overflow: hidden;
+        width: 100%;
+        min-height: calc(100vh - 76px);
+    }
+    .section-sequence-frame .sequence-wrapper{
+        width: 100%;
+        height: 100vh;
+    }
+    canvas.sequence-canvas{
+        width: 100%;
+        height: 100%;
+    }
+    .section-sequence-frame .sequence-txt-wrap{
+        width: 17.604167vw;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 10.729167vw;
+    }
+    .section-sequence-frame .sequence-txt-wrap .sequence-txt-container{
+        position: absolute;  
+    }
+    .section-sequence-frame .sequence-txt-wrap .sequence-txt-container:not(:first-child){
+        -webkit-transform: translateY(19.322917vw);
+        transform: translateY(19.322917vw);
+        opacity: 0;
+    }
+    .section-sequence-frame .sequence-txt-container h6{
+        /*font-size: var(--h3-font-size) !important;*/
+    }
+    .section-sequence-frame .sequence-txt-containe span{
+        /*font-size: .7em !important;*/
+    }
+    .section-sequence-frame .sequence-txt-wrap h6 {
+    	margin: 0;
+        font-size: 1.666667vw !important;
+        font-weight: 400 !important;
+        color: #211D1E;
+        line-height: 1.25 !important;
+    }
+    .section-sequence-frame .sequence-txt-wrap p {
+	    margin-top: 1.5625vw;
+	    font-size: 1.145833vw;
+	    color: #868686;
+	    line-height: 1.6;
+	    font-weight: 400;
+	}
+    
+    @media screen and (max-width: 779px), screen and (max-aspect-ratio: 1 / 1) and (max-width: 1200px){
+        .section-sequence-frame .sticky-content {
+            /*top: 96px;*/
+            height: calc(100vh - 96px);
+        }
+        .section-sequence-frame .sequence-wrapper {
+            height: 177.777778vw;
+        }
+        .section-sequence-frame .sequence-txt-wrap {
+            width: 73.722222vw;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            /* height: 177.777778vw; */
+        }
+        .section-sequence-frame .sequence-txt-wrap .sequence-txt-container {
+            width: 100%;
+            /* top: calc(100vh - 96px - 54.6875% + 55.555556vw); */
+            top: calc(100vh - 96px - 54.6875% + 22.96875vh);
+        }
+        .section-sequence-frame .sequence-txt-wrap h6 {
+            font-size: 4.444444vw !important;
+        }
+    }
+    
+</style>
+
+<section class="section section-sequence-frame">
+	<div id='sequence-trigger'></div>
+	<div class="sticky-wrapper">
+	    <div class="sticky-content">
+	        <div class="sequence-wrapper">
+	            <canvas id="hero-lightpass" class="sequence-canvas"  ></canvas>
+	        </div>
+	        <div class="sequence-txt-wrap">
+	            <div class="sequence-txt-container sequence-txt-container1">
+	                <h6>Nanocrystalline Ceramic Body <br>Sapphire Watch Dial<sup class="yes-click">1</sup></h6>
+	                <p>
+	                    Shimmering white nano-ceramics accompanied by a sapphire crystal glass dial. This
+	                    timepiece has a unique and stylish look that will thrive on any occasion, no matter
+	                    where you are.
+	                </p>
+	            </div>
+	            <div class="sequence-txt-container sequence-txt-container2">
+	                <h6>Shell-Printed Stainless-Steel Bezel<br>
+	                    Metal ECG Button</h6>
+	                <p>
+	                    Inspired by the ripples of time,
+	                    24 shell curves rise and fall. Experience every second of that daily change from day to
+	                    night with this unique watch. A carved stainless-steel crown incorporates sleek coloured
+	                    metal ECG pusher.
+	                </p>
+	            </div>
+	            <div class="sequence-txt-container sequence-txt-container3">
+	                <h6>Spherical Ceramic Rotatable Crown</h6>
+	                <p>A spherical ceramic is embedded on one side to add a touch of stereoscopic elegance.</p>
+	            </div>
+	            <div class="sequence-txt-container sequence-txt-container4">
+	                <h6>Integrated CaseBack</h6>
+	                <p>High-transmitting sapphire glass<sup class="yes-click">1</sup> makes high-precision
+	                    sensor measurements more accurate and is integrated with the ceramic materials for a
+	                    neatly-fit and comfortable wear.</p>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
+
+
+<script>
+    const initSequenceFrame = new SequenceFrame({
+        trigger: '#sequence-trigger',
+        wrapper: '.sequence-wrapper',
+        canvas: '#hero-lightpass',
+        path: '.	/imgs/sequence/',
+        frames: 187,
+        webp: false,
+        fit: 'cover',
+        duration: '400%',
+        triggerHook: 0,
+        portraitSuffix: '-xs',
+        isPortrait: function () {
+            return window.matchMedia('(max-aspect-ratio: 11/10)').matches;
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        console.log(initSequenceFrame) 
+    })
+</script>
+<script>
+    const $ = jQuery;
+    $(function() {
+    
+        let animSwitch = false;
+        if (!!(window.CSS && window.CSS.supports || window.supportsCSS || false)) {
+            if (CSS.supports('position', 'sticky')) {
+                animSwitch = true;
+            }
+        }
+    
+        if (animSwitch) {
+            let $winHeight = window.innerHeight;
+            let $winWidth = window.innerWidth;
+            let aspectRatio = window.matchMedia("(max-aspect-ratio: 1/1)").matches;
+            let isMob = $winWidth < 780 || aspectRatio;
+            let foldScreen = $winWidth > 676 && $winWidth < 735 && window.matchMedia("(min-aspect-ratio: 734/747)").matches;
+            let controller = new ScrollMagic.Controller();
+    
+            let sequenceTimeL = new TimelineMax()
+                .add([
+                    TweenMax.to('.empty', 15 / 187, {})
+                ])
+                .add([
+                    TweenMax.to('.sequence-txt-container1', 33 / 2 / 187, {
+                        autoAlpha: 0,
+                        'transform': isMob ? foldScreen ? 'translateY(-1vw)' : 'translateY(-80%)' : 'translateY(-5.729167vw)',
+                    })
+                ])
+                .add([
+                    TweenMax.to('.sequence-txt-container1', 33 / 2 / 187, {})
+                ])
+    
+                .add([
+                    TweenMax.to('.sequence-txt-container2', 33 / 187, {
+                        autoAlpha: 1,
+                        y: 0,
+                    })
+                ], '-=0.15508021390374332')
+                .add([
+                    TweenMax.to('.empty', 15 / 187, {})
+                ])
+                .add([
+                    TweenMax.to('.sequence-txt-container2', 29 / 2 / 187, {
+                        autoAlpha: 0,
+                        'transform': isMob ? foldScreen ? 'translateY(-1vw)' : 'translateY(-80%)' : 'translateY(-5.729167vw)',
+                    })
+                ])
+                .add([
+                    TweenMax.to('.sequence-txt-container2', 29 / 2 / 187, {})
+                ])
+    
+                .add([
+                    TweenMax.to('.sequence-txt-container3', 29 / 187, {
+                        autoAlpha: 1,
+                        y: 0,
+                    })
+                ], '-=0.13368983957219252')
+                .add([
+                    TweenMax.to('.empty', 13 / 187, {})
+                ])
+                .add([
+                    TweenMax.to('.sequence-txt-container3', 65 / 2 / 187, {
+                        autoAlpha: 0,
+                        'transform': isMob ? foldScreen ? 'translateY(-1vw)' : 'translateY(-80%)' : 'translateY(-5.729167vw)',
+                    })
+                ])
+                .add([
+                    TweenMax.to('.sequence-txt-container3', 65 / 2 / 187, {})
+                ])
+    
+                .add([
+                    TweenMax.to('.sequence-txt-container4', 65 / 187, {
+                        autoAlpha: 1,
+                        y: 0,
+                    })
+                ], '-=0.32620320855614976')
+                .add([
+                    TweenMax.to('.empty', 17 / 187, {})
+                ])
+    
+            new ScrollMagic.Scene({
+                triggerHook: 0,
+                triggerElement: '#sequence-trigger',
+                duration: '400%',
+            })
+            .setTween(sequenceTimeL)
+            .addTo(controller)
+        }
+    })
+</script>
